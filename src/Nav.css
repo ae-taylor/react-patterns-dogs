@@ -1,0 +1,10 @@
+
+
+.Nav-NavLink.active {
+	color: black;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+
+.NavBar {
+	  background-color: rgb(159, 250, 250);
+  }

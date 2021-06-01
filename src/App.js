@@ -1,78 +1,89 @@
 import './App.css';
-import { BrowserRouter, Route, Switch, Redirect, useParams } from "react-router-dom";
-import whiskey from "./whiskey.jpg";
-import duke from "./duke.jpg";
-import tubby from "./tubby.jpg";
-import perry from "./perry.jpg";
-import DogDetails from "./DogDetails"
-import DogList from "./DogList"
-import Nav from "./Nav"
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import whiskey from './whiskey.jpg';
+import duke from './duke.jpg';
+import tubby from './tubby.jpg';
+import perry from './perry.jpg';
+import DogDetails from './DogDetails';
+import DogList from './DogList';
+import Nav from './Nav';
 
-function App({dogs}) {
+/**
+ * Conductor component renders nav and routers
+ *
+ * * Props: dogs: array of objects [
+  {
+    name: "Whiskey",
+    age: 5,
+    src: whiskey,
+    facts: [ "Whiskey loves eating popcorn.", ...]
+  }, ... }
 
+  index -> App -> Nav, DogList/DogDetails
+ */
+
+function App({ dogs }) {
   return (
     <div className="App">
       <BrowserRouter>
-        <Nav />
+        <Nav dogs={dogs} />
         <Switch>
-          <Route exact path="/dogs" >
-            <DogList dogs={dogs}/>
+          <Route exact path="/dogs">
+            <DogList dogs={dogs} />
           </Route>
           <Route exact path="/dogs/:name">
-            <DogDetails dogs={dogs}/>
+            <DogDetails dogs={dogs} />
           </Route>
           <Redirect to="/dogs" />
         </Switch>
       </BrowserRouter>
     </div>
   );
-
-  
 }
 
 App.defaultProps = {
   dogs: [
     {
-      name: "Whiskey",
+      name: 'Whiskey',
       age: 5,
       src: whiskey,
       facts: [
-        "Whiskey loves eating popcorn.",
-        "Whiskey is a terrible guard dog.",
-        "Whiskey wants to cuddle with you!"
-      ]
+        'Whiskey loves eating popcorn.',
+        'Whiskey is a terrible guard dog.',
+        'Whiskey wants to cuddle with you!',
+      ],
     },
     {
-      name: "Duke",
+      name: 'Duke',
       age: 3,
       src: duke,
       facts: [
-        "Duke believes that ball is life.",
-        "Duke likes snow.",
-        "Duke enjoys pawing other dogs."
-      ]
+        'Duke believes that ball is life.',
+        'Duke likes snow.',
+        'Duke enjoys pawing other dogs.',
+      ],
     },
     {
-      name: "Perry",
+      name: 'Perry',
       age: 4,
       src: perry,
       facts: [
-        "Perry loves all humans.",
-        "Perry demolishes all snacks.",
-        "Perry hates the rain."
-      ]
+        'Perry loves all humans.',
+        'Perry demolishes all snacks.',
+        'Perry hates the rain.',
+      ],
     },
     {
-      name: "Tubby",
+      name: 'Tubby',
       age: 4,
       src: tubby,
       facts: [
-        "Tubby is really stupid.",
-        "Tubby does not like walks.",
-        "Angelina used to hate Tubby, but claims not to anymore."
-      ]
-    }
-  ]
-}
+        'Tubby is really stupid.',
+        'Tubby does not like walks.',
+        'Angelina used to hate Tubby, but claims not to anymore.',
+      ],
+    },
+  ],
+};
 
 export default App;
